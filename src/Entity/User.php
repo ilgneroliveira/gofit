@@ -127,7 +127,7 @@ class User
     }
 
     /**
-     * @param |KindType $media_type
+     * @param string|KindType $kind_type
      */
     public function setKind($kind_type)
     {
@@ -211,15 +211,15 @@ class User
     /**
      * @param bool $as_enum
      *
-     * @return string|KindType
+     * @return string|AvailableTimeType
      */
     public function getAvailableTime($as_enum = false)
     {
         if ($as_enum) {
-            return new KindType($this->kind);
+            return new AvailableTimeType($this->available_time);
         }
 
-        return $this->kind;
+        return $this->available_time;
     }
 
     /**

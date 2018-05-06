@@ -23,7 +23,7 @@ class UserController extends Controller
             ->getRepository(User::class)
             ->findAll();
 
-        return $this->render('user/index.html.twig', ['users' => $users]);
+        return $this->json($users);
     }
 
     /**
@@ -40,13 +40,16 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_index');
+            $result = ['success' => 1, 'message' => 'Cadastro salvo'];
+            return $this->json($result);
         }
 
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
+        $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $form->getErrors()];
+        return $this->json($result);
+//        return $this->render('user/new.html.twig', [
+//            'user' => $user,
+//            'form' => $form->createView(),
+//        ]);
     }
 
     /**
