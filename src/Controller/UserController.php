@@ -44,8 +44,12 @@ class UserController extends Controller
             return $this->json($result);
         }
 
-        $error = $form->getErrors();
-        $error[] = $user;
+        $error = [$form, 'user' => $user];
+
+        $file = fopen('teste.txt', 'a');
+        fwrite($file, $user->getName());
+        fclose($file);
+
 
         $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $error];
         return $this->json($result);
