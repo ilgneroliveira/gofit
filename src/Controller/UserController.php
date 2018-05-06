@@ -44,7 +44,10 @@ class UserController extends Controller
             return $this->json($result);
         }
 
-        $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $form->getErrors()];
+        $error = $form->getErrors();
+        $error[] = $user;
+
+        $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $error];
         return $this->json($result);
 //        return $this->render('user/new.html.twig', [
 //            'user' => $user,
