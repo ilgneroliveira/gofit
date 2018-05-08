@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Perfil\LifestyleProfile;
 use App\Enum\AvailableTimeType;
 use App\Enum\KindType;
 use DateTime;
@@ -31,61 +32,61 @@ class User
     protected $id;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $name;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $kind;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $image;
 
     /**
-     * @Column(type="datetime")
+     * @Column(type="datetime", nullable=true)
      * @var DateTime
      */
     private $birth_date;
 
     /**
-     * @Column(type="float")
+     * @Column(type="float", nullable=true)
      * @var double
      */
     private $weight;
 
     /**
-     * @Column(type="float")
+     * @Column(type="float", nullable=true)
      * @var double
      */
     private $height;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $available_time;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $login;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $email;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", length=255, nullable=true)
      * @var string
      */
     private $password;
@@ -319,5 +320,20 @@ class User
         if (isset($data['login'])) $this->setLogin($data['login']);
         if (isset($data['password'])) $this->setPassword($data['password']);
         if (isset($data['life_style_profile'])) $this->setLifestyleprofile($data['life_style_profile']);
+    }
+
+    public function toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'kind' => $this->getKind(),
+            'image' => $this->getImage(),
+            'birth_date' => $this->getBirthDate(),
+            'weight' => $this->getWeight(),
+            'height' => $this->getHeight(),
+            'available_time' => $this->getAvailableTime(),
+            'login' => $this->getLogin(),
+            'password' => $this->getPassword(),
+        ];
     }
 }

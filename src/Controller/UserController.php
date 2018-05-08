@@ -31,6 +31,7 @@ class UserController extends Controller
      */
     public function new(Request $request): Response
     {
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -44,10 +45,10 @@ class UserController extends Controller
             return $this->json($result);
         }
 
-        $error = [$form, 'user' => $user];
+        $error = ['form' => $form->getData(), 'user' => $user->toArray()];
 
-        $file = fopen('teste.txt', 'a');
-        fwrite($file, $user->getName());
+        $file = fopen('post.txt', 'a');
+        fwrite($file, implode(',',$_POST));
         fclose($file);
 
 
