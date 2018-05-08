@@ -31,33 +31,20 @@ class UserController extends Controller
      */
     public function new(Request $request): Response
     {
-
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $user->populate((array)json_decode($request->getContent()));
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        try{
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
             $result = ['success' => 1, 'message' => 'Cadastro salvo'];
             return $this->json($result);
+        }catch (\Exception $exception){
+            $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $exception->getMessage()];
+            return $this->json($result);
         }
-
-        $error = ['form' => $form->getData(), 'user' => $user->toArray()];
-
-        $file = fopen('post.txt', 'a');
-        fwrite($file, implode(',',$_POST));
-        fclose($file);
-
-
-        $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $error];
-        return $this->json($result);
-//        return $this->render('user/new.html.twig', [
-//            'user' => $user,
-//            'form' => $form->createView(),
-//        ]);
     }
 
     /**

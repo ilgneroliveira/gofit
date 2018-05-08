@@ -312,14 +312,16 @@ class User
     {
         if (isset($data['name'])) $this->setName($data['name']);
         if (isset($data['kind'])) $this->setKind($data['kind']);
+        if (isset($data['email'])) $this->setEmail($data['email']);
         if (isset($data['image'])) $this->setImage($data['image']);
-        if (isset($data['birth_date'])) $this->setBirthDate(new DateTime($data['birth_date']));
+        if (isset($data['birth_date'])){
+            $this->setBirthDate(DateTime::createFromFormat('d/m/Y', $data['birth_date']));
+        }
         if (isset($data['weight'])) $this->setWeight($data['weight']);
         if (isset($data['height'])) $this->setHeight($data['height']);
         if (isset($data['available_time'])) $this->setAvailableTime($data['available_time']);
         if (isset($data['login'])) $this->setLogin($data['login']);
         if (isset($data['password'])) $this->setPassword($data['password']);
-        if (isset($data['life_style_profile'])) $this->setLifestyleprofile($data['life_style_profile']);
     }
 
     public function toArray()
@@ -328,7 +330,8 @@ class User
             'name' => $this->getName(),
             'kind' => $this->getKind(),
             'image' => $this->getImage(),
-            'birth_date' => $this->getBirthDate(),
+            'email' => $this->getEmail(),
+            'birth_date' => $this->getBirthDate()->format('d/m/Y'),
             'weight' => $this->getWeight(),
             'height' => $this->getHeight(),
             'available_time' => $this->getAvailableTime(),
