@@ -25,7 +25,11 @@ class UserRepository extends EntityRepository
             ->setParameter('password', $password);
 
         try {
-            return $qb->getQuery()->getSingleScalarResult();
+            if($qb->getQuery()->getSingleScalarResult() > 0){
+                return true;
+            }
+
+            return false;
         } catch (NonUniqueResultException $e) {
             return false;
         }

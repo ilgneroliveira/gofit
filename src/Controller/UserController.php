@@ -71,8 +71,6 @@ class UserController extends Controller
             return $this->json(['is_valid' => false]);
         }
 
-        //O e-mail e a senha fornecidos não correspondem às informações em nossos registros. Verifique-as e tente novamente.
-
         $is_valid = $user_repsitory->authenticate($data['email'], $data['password']);
 
         return $this->json(['is_valid' => $is_valid]);
