@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,21 +28,21 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/new", name="user_new", methods="GET|POST")
+     * @Route("/new", name="user_new", methods="POST")
      */
     public function new(Request $request): Response
     {
         $user = new User();
         $user->populate((array)json_decode($request->getContent()));
 
-        try{
+        try {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
             $result = ['success' => 1, 'message' => 'Cadastro salvo'];
             return $this->json($result);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $exception->getMessage()];
             return $this->json($result);
         }
@@ -52,11 +53,33 @@ class UserController extends Controller
      */
     public function show(User $user): Response
     {
-        return $this->render('user/show.html.twig', ['user' => $user]);
+        return $this->json($user);
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods="GET|POST")
+     * @Route("/authenticate", name="user_authenticate", methods="POST")
+     */
+    public function authenticate(Request $request): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var UserRepository $user_repsitory */
+        $user_repsitory = $em->getRepository(User::class);
+
+        $data = (array)json_decode($request->getContent());
+
+        if (!isset($data['email']) || !isset($data['password'])) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        //O e-mail e a senha fornecidos não correspondem às informações em nossos registros. Verifique-as e tente novamente.
+
+        $is_valid = $user_repsitory->authenticate($data['email'], $data['password']);
+
+        return $this->json(['is_valid' => $is_valid]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="user_edit", methods="POST")
      */
     public function edit(Request $request, User $user): Response
     {
@@ -73,19 +96,5 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/{id}", name="user_delete", methods="DELETE")
-     */
-    public function delete(Request $request, User $user): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('user_index');
     }
 }

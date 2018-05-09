@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping\Table;
 /**
  * User
  *
- * @Entity
+ * @Entity(repositoryClass="App\Repository\UserRepository")
  * @Table(name="user")
  *
  * @author  Ilgner Fagundes <ilgner552@gmail.com>
@@ -80,7 +80,7 @@ class User
     private $login;
 
     /**
-     * @Column(type="string", length=255, nullable=true)
+     * @Column(type="string", length=255, nullable=false, unique=true)
      * @var string
      */
     private $email;
@@ -96,6 +96,14 @@ class User
      * @var int
      */
     private $life_style_profile;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * @return string
@@ -304,7 +312,6 @@ class User
     {
         $this->life_style_profile = $life_style_profile;
     }
-
     /**
      * @param array $data
      */
@@ -327,6 +334,7 @@ class User
     public function toArray()
     {
         return [
+            'id'   => $this->getId(),
             'name' => $this->getName(),
             'kind' => $this->getKind(),
             'image' => $this->getImage(),
