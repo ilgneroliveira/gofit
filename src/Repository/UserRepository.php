@@ -34,4 +34,22 @@ class UserRepository extends EntityRepository
             return false;
         }
     }
+
+    public function isAlreadyRegistered($id)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->select('count(u.id)')
+            ->where('u.login = :id')
+            ->setParameter('id', $id);
+
+        try {
+            if($qb->getQuery()->getSingleScalarResult() > 0){
+                return true;
+            }
+
+            return false;
+        } catch (NonUniqueResultException $e) {
+            return false;
+        }
+    }
 }

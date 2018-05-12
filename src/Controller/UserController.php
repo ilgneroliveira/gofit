@@ -77,6 +77,26 @@ class UserController extends Controller
     }
 
     /**
+     * @Route("/already/registered", name="user_already_registered", methods="POST")
+     */
+    public function isAlreadyRegistered(Request $request): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var UserRepository $user_repsitory */
+        $user_repsitory = $em->getRepository(User::class);
+
+        $data = (array)json_decode($request->getContent());
+
+        if (!isset($data['id'])) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        $is_valid = $user_repsitory->isAlreadyRegistered($data['id']);
+
+        return $this->json(['is_valid' => $is_valid]);
+    }
+
+    /**
      * @Route("/{id}/edit", name="user_edit", methods="POST")
      */
     public function edit(Request $request, User $user): Response
