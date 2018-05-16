@@ -11,18 +11,18 @@ use MyCLabs\Enum\Enum;
  * @version 1.0
  *
  * @method static KindType MALE()
- * @method static KindType FAMELE()
+ * @method static KindType FEMALE()
  */
 class KindType extends Enum
 {
     //situations
     const MALE = 'male';
-    const FAMELE = 'famele';
+    const FEMALE = 'female';
 
     /** @var array */
     protected static $captions = [
         self::MALE => 'Masculino',
-        self::FAMELE => 'Feminino',
+        self::FEMALE => 'Feminino',
     ];
 
     /**
