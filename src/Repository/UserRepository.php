@@ -35,12 +35,14 @@ class UserRepository extends EntityRepository
         }
     }
 
-    public function isAlreadyRegistered($id)
+    public function isAlreadyRegistered($value, $is_email = false)
     {
         $qb = $this->createQueryBuilder('u');
-        $qb->select('count(u.id)')
-            ->where('u.login = :id')
-            ->setParameter('id', $id);
+        $qb->select('count(u.id)');
+
+        $column = $is_email?'email':'login';
+        $qb->where("u.{$column} = :value")
+            ->setParameter('value', $value);
 
         try {
             if($qb->getQuery()->getSingleScalarResult() > 0){

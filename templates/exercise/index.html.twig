@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercise index{% endblock %}
+
+{% block body %}
+    <h1>Exercise index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Amount_executed</th>
+                <th>Media_url</th>
+                <th>Media_type</th>
+                <th>Question_one</th>
+                <th>Weight_question_one</th>
+                <th>Question_two</th>
+                <th>Weight_question_two</th>
+                <th>Question_three</th>
+                <th>Weight_question_three</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise.id }}</td>
+                <td>{{ exercise.title }}</td>
+                <td>{{ exercise.amount_executed }}</td>
+                <td>{{ exercise.media_url }}</td>
+                <td>{{ exercise.media_type }}</td>
+                <td>{{ exercise.question_one }}</td>
+                <td>{{ exercise.weight_question_one }}</td>
+                <td>{{ exercise.question_two }}</td>
+                <td>{{ exercise.weight_question_two }}</td>
+                <td>{{ exercise.question_three }}</td>
+                <td>{{ exercise.weight_question_three }}</td>
+                <td>
+                    <a href="{{ path('exercise_show', {'id': exercise.id}) }}">show</a>
+                    <a href="{{ path('exercise_edit', {'id': exercise.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('exercise_new') }}">Create new</a>
+{% endblock %}

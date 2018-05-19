@@ -20,11 +20,24 @@ class UserController extends Controller
      */
     public function index(): Response
     {
-        $users = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->findAll();
+        $users = $this->getRepository()->findAll();
 
         return $this->json($users);
+    }
+
+    /**
+     * @Route("/new", name="user_new_get", methods="GET")
+     */
+    public function newGet(Request $request): Response
+    {
+        $exercise = new User();
+        $form = $this->createForm(UserType::class, $exercise);
+        $form->handleRequest($request);
+
+        return $this->render('exercise/new.html.twig', [
+            'exercise' => $exercise,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -34,6 +47,11 @@ class UserController extends Controller
     {
         $user = new User();
         $user->populate((array)json_decode($request->getContent()));
+
+        if($this->getRepository()->isAlreadyRegistered($user->getEmail(), true)){
+            $result = ['success' => 0, 'message' => 'Cadastro não foi salvo, Email já cadastrado', 'error' => 'Email já cadastrado'];
+            return $this->json($result);
+        }
 
         try {
             $em = $this->getDoctrine()->getManager();
@@ -61,17 +79,13 @@ class UserController extends Controller
      */
     public function authenticate(Request $request): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        /** @var UserRepository $user_repsitory */
-        $user_repsitory = $em->getRepository(User::class);
-
         $data = (array)json_decode($request->getContent());
 
         if (!isset($data['email']) || !isset($data['password'])) {
             return $this->json(['is_valid' => false]);
         }
 
-        $is_valid = $user_repsitory->authenticate($data['email'], $data['password']);
+        $is_valid = $this->getRepository()->authenticate($data['email'], $data['password']);
 
         return $this->json(['is_valid' => $is_valid]);
     }
@@ -81,17 +95,13 @@ class UserController extends Controller
      */
     public function isAlreadyRegistered(Request $request): Response
     {
-        $em = $this->getDoctrine()->getManager();
-        /** @var UserRepository $user_repsitory */
-        $user_repsitory = $em->getRepository(User::class);
-
         $data = (array)json_decode($request->getContent());
 
         if (!isset($data['id'])) {
             return $this->json(['is_valid' => false]);
         }
 
-        $is_valid = $user_repsitory->isAlreadyRegistered($data['id']);
+        $is_valid = $this->getRepository()->isAlreadyRegistered($data['id']);
 
         return $this->json(['is_valid' => $is_valid]);
     }
@@ -114,5 +124,13 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @return UserRepository|\Doctrine\Common\Persistence\ObjectRepository
+     */
+    private function getRepository()
+    {
+        return $this->getDoctrine()->getRepository(User::class);
     }
 }
