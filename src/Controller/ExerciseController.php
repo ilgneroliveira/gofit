@@ -6,7 +6,7 @@ use App\Entity\Exercise;
 use App\Entity\ScheduleExercise;
 use App\Entity\User;
 use App\Enum\MediaType;
-use App\Form\Exercise1Type;
+use App\Form\ExerciseType;
 use App\Repository\ExerciseRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -34,7 +34,7 @@ class ExerciseController extends Controller
     public function new(Request $request): Response
     {
         $exercise = new Exercise();
-        $form = $this->createForm(Exercise1Type::class, $exercise);
+        $form = $this->createForm(ExerciseType::class, $exercise);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -80,7 +80,7 @@ class ExerciseController extends Controller
      */
     public function edit(Request $request, Exercise $exercise): Response
     {
-        $form = $this->createForm(Exercise1Type::class, $exercise);
+        $form = $this->createForm(ExerciseType::class, $exercise);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

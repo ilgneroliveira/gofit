@@ -50,6 +50,12 @@ class Exercise
      * @Column(type="string", length=255)
      * @var string
      */
+    protected $featured_image_url;
+
+    /**
+     * @Column(type="string", length=255)
+     * @var string
+     */
     protected $media_url;
 
     /**
@@ -300,5 +306,21 @@ class Exercise
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFeaturedImageUrl(): string
+    {
+        return $this->featured_image_url;
+    }
+
+    /**
+     * @param string $featured_image_url
+     */
+    public function setFeaturedImageUrl(string $featured_image_url): void
+    {
+        $this->featured_image_url = $featured_image_url;
     }
 }
