@@ -311,7 +311,7 @@ class Exercise
     /**
      * @return string
      */
-    public function getFeaturedImageUrl(): string
+    public function getFeaturedImageUrl()
     {
         return $this->featured_image_url;
     }
