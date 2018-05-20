@@ -6,7 +6,7 @@ use App\Entity\Exercise;
 use App\Entity\ScheduleExercise;
 use App\Entity\User;
 use App\Enum\MediaType;
-use App\Form\Exercise1Type;
+use App\Form\ExerciseType;
 use App\Repository\ExerciseRepository;
 use App\Repository\ScheduleExerciseRepository;
 use App\Repository\UserRepository;
@@ -95,13 +95,13 @@ class ScheduleExerciseController extends Controller
      */
     public function delete(Request $request, Exercise $exercise): Response
     {
-        try{
+        try {
             $em = $this->getDoctrine()->getManager();
             $em->remove($exercise);
             $em->flush();
 
             return $this->json(['success' => 0, 'message' => 'Agendamento excluído']);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return $this->json(['success' => 0, 'message' => 'Erro ao excluír agendamento']);
         }
     }
