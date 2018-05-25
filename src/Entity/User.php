@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Perfil\LifestyleProfile;
 use App\Enum\AvailableTimeType;
 use App\Enum\KindType;
 use DateTime;
@@ -312,6 +311,7 @@ class User
     {
         $this->life_style_profile = $life_style_profile;
     }
+
     /**
      * @param array $data
      */
@@ -321,7 +321,7 @@ class User
         if (isset($data['kind'])) $this->setKind($data['kind']);
         if (isset($data['email'])) $this->setEmail($data['email']);
         if (isset($data['image'])) $this->setImage($data['image']);
-        if (isset($data['birth_date'])){
+        if (isset($data['birth_date'])) {
             $this->setBirthDate(DateTime::createFromFormat('d/m/Y', $data['birth_date']));
         }
         if (isset($data['weight'])) $this->setWeight($data['weight']);
@@ -334,7 +334,7 @@ class User
     public function toArray()
     {
         return [
-            'id'   => $this->getId(),
+            'id' => $this->getId(),
             'name' => $this->getName(),
             'kind' => $this->getKind(),
             'image' => $this->getImage(),
