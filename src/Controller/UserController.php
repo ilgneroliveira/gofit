@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UserController extends Controller
 {
+
+    /** @var LoggerInterface */
+    private $logger;
+
+    /**
+     * VideoController constructor.
+     *
+     * @param LoggerInterface $logger
+     */
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
     /**
      * @Route("/", name="user_index", methods="GET")
      */
@@ -124,6 +139,22 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+
+    /**
+     * @Route("/notify", name="user_notify", methods="POST")
+     */
+    public function notify(Request $request): Response
+    {
+        $data = (array)json_decode($request->getContent());
+
+        $this->logger->alert(
+            "Teste",
+            $data
+        );
+
+        return $this->json(['is_valid' => 1]);
     }
 
     /**
