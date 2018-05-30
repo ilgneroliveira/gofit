@@ -151,7 +151,7 @@ class UserController extends Controller
 
         $this->logger->alert(
             "Teste",
-            $data
+            (array)$data['job']
         );
 
         return $this->json(['is_valid' => 1]);
