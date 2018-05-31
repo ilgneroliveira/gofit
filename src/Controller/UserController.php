@@ -151,6 +151,12 @@ class UserController extends Controller
 
         $result = [];
         foreach ($data as $key => $r) {
+            foreach ($r as $key1 => $r1) {
+                if(!is_string($r1)){
+                    $result[$key][$key1] = (array)$r1;
+                }
+            }
+
             $result[$key] = (array)$r;
         }
 
