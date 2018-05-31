@@ -160,8 +160,6 @@ class UserController extends Controller
             $result[$key] = (array)$r;
         }
 
-        $result["output"]["thumbnails"] = (array)$result["output"]["thumbnails"];
-
 
         $this->logger->alert(
             "Teste",
