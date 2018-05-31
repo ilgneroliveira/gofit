@@ -149,9 +149,15 @@ class UserController extends Controller
     {
         $data = (array)json_decode($request->getContent());
 
+        $result = [];
+        foreach ($data as $key => $r) {
+            $result[$key] = (array)$r;
+        }
+
+
         $this->logger->alert(
             "Teste",
-            (array)$data['job']
+            $result
         );
 
         return $this->json(['is_valid' => 1]);
