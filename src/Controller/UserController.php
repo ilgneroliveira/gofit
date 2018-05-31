@@ -161,6 +161,7 @@ class UserController extends Controller
         }
 
 
+
         $this->logger->alert(
             "Teste",
             $result
