@@ -147,7 +147,11 @@ class UserController extends Controller
      */
     public function notify(Request $request): Response
     {
-        $data = (array)json_decode($request->getContent());
+        $data = json_decode($request->getContent());
+
+        if(!is_array($data)){
+            $data = (array)$data;
+        }
 
         $result = [];
         foreach ($data as $key => $r) {
