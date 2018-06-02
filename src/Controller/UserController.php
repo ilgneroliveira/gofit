@@ -151,7 +151,7 @@ class UserController extends Controller
 
         $this->logger->alert(
             "Teste",
-            $data
+            $request->getContent()
         );
 
         if(!is_array($data)){
