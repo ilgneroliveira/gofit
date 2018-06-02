@@ -149,6 +149,11 @@ class UserController extends Controller
     {
         $data = json_decode($request->getContent());
 
+        $this->logger->alert(
+            "Teste",
+            $data
+        );
+
         if(!is_array($data)){
             $data = (array)$data;
         }
