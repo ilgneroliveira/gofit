@@ -63,7 +63,7 @@ class UserController extends Controller
         $user = new User();
         $user->populate((array)json_decode($request->getContent()));
 
-        if($this->getRepository()->isAlreadyRegistered($user->getEmail(), true)){
+        if(is_array($this->getRepository()->isAlreadyRegistered($user->getEmail(), true))){
             $result = ['success' => 0, 'message' => 'Cadastro não foi salvo, Email já cadastrado', 'error' => '1'];
             return $this->json($result);
         }
@@ -116,9 +116,9 @@ class UserController extends Controller
             return $this->json(['is_valid' => false]);
         }
 
-        $is_valid = $this->getRepository()->isAlreadyRegistered($data['id']);
+        $result = $this->getRepository()->isAlreadyRegistered($data['id']);
 
-        return $this->json(['is_valid' => $is_valid]);
+        return $this->json($result);
     }
 
     /**

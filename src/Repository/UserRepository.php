@@ -55,8 +55,11 @@ class UserRepository extends EntityRepository
             ->setParameter('value', $value);
 
         try {
-            if($qb->getQuery()->getSingleScalarResult() > 0){
-                return true;
+            /** @var User $user */
+            $user =$qb->getQuery()->getOneOrNullResult();
+            if($user){
+
+                return ['is_valid' => true, 'id'=>$user->getId()];
             }
 
             return false;
