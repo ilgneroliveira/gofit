@@ -64,7 +64,7 @@ class UserController extends Controller
         $user->populate((array)json_decode($request->getContent()));
 
         if($this->getRepository()->isAlreadyRegistered($user->getEmail(), true)){
-            $result = ['success' => 0, 'message' => 'Cadastro não foi salvo, Email já cadastrado', 'error' => 'Email já cadastrado'];
+            $result = ['success' => 0, 'message' => 'Cadastro não foi salvo, Email já cadastrado', 'error' => '1'];
             return $this->json($result);
         }
 
@@ -76,7 +76,7 @@ class UserController extends Controller
             $result = ['success' => 1, 'message' => 'Cadastro salvo'];
             return $this->json($result);
         } catch (\Exception $exception) {
-            $result = ['success' => 0, 'message' => 'Cadastro não foi salvo', 'error' => $exception->getMessage()];
+            $result = ['success' => 0, 'message' => $exception->getMessage(), 'error' => $exception->getCode().""];
             return $this->json($result);
         }
     }
