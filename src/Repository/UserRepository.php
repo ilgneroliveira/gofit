@@ -48,7 +48,7 @@ class UserRepository extends EntityRepository
     public function isAlreadyRegistered($value, $is_email = false)
     {
         $qb = $this->createQueryBuilder('u');
-        $qb->select('count(u.id)');
+        $qb->select('u');
 
         $column = $is_email?'email':'login';
         $qb->where("u.{$column} = :value")
@@ -58,7 +58,6 @@ class UserRepository extends EntityRepository
             /** @var User $user */
             $user =$qb->getQuery()->getOneOrNullResult();
             if($user){
-
                 return ['is_valid' => true, 'id'=>$user->getId()];
             }
 
