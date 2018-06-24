@@ -73,7 +73,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $result = ['success' => 1, 'message' => 'Cadastro salvo'];
+            $result = ['success' => 1, 'message' => 'Cadastro salvo', 'id' => $user->getId()];
             return $this->json($result);
         } catch (\Exception $exception) {
             $result = ['success' => 0, 'message' => $exception->getMessage(), 'error' => $exception->getCode().""];
@@ -100,9 +100,9 @@ class UserController extends Controller
             return $this->json(['is_valid' => false]);
         }
 
-        $is_valid = $this->getRepository()->authenticate($data['email'], $data['password']);
+        $result = $this->getRepository()->authenticate($data['email'], $data['password']);
 
-        return $this->json(['is_valid' => $is_valid]);
+        return $this->json($result);
     }
 
     /**

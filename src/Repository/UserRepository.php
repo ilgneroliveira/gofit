@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 
@@ -15,23 +16,32 @@ use Doctrine\ORM\NonUniqueResultException;
 class UserRepository extends EntityRepository
 {
 
+    /**
+     * @param $email
+     * @param $password
+     *
+     * @return array
+     */
     public function authenticate($email, $password)
     {
         $qb = $this->createQueryBuilder('u');
-        $qb->select('count(u.id)')
+        $qb->select('u')
             ->where('u.email = :email')
             ->andWhere('u.password = :password')
             ->setParameter('email', $email)
             ->setParameter('password', $password);
 
         try {
-            if($qb->getQuery()->getSingleScalarResult() > 0){
-                return true;
+            /** @var User $user */
+            $user =$qb->getQuery()->getOneOrNullResult();
+            if($user){
+
+                return ['is_valid' => true, 'id'=>$user->getId()];
             }
 
-            return false;
+            return ['is_valid' => false];
         } catch (NonUniqueResultException $e) {
-            return false;
+            return ['is_valid' => false];
         }
     }
 
