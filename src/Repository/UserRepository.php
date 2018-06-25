@@ -61,9 +61,9 @@ class UserRepository extends EntityRepository
                 return ['is_valid' => true, 'id'=>$user->getId()];
             }
 
-            return false;
+            return ['is_valid' => false];
         } catch (NonUniqueResultException $e) {
-            return false;
+            return ['is_valid' => false];
         }
     }
 }

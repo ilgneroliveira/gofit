@@ -102,6 +102,22 @@ class LifestyleProfileController extends Controller
     }
 
     /**
+     * @Route("/already/create", name="already_create", methods="POST")
+     */
+    public function isAlreadyCreate(Request $request): Response
+    {
+        $data = (array)json_decode($request->getContent());
+
+        if (!isset($data['id'])) {
+            return $this->json(['is_create' => false]);
+        }
+
+        $result = $this->getRepository()->isAlreadyCreate($data['id']);
+
+        return $this->json($result);
+    }
+
+    /**
      * @return LifestyleProfileRepository|\Doctrine\Common\Persistence\ObjectRepository
      */
     private function getRepository()
