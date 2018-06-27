@@ -24,15 +24,15 @@ class LifestyleProfileRepository extends EntityRepository
             ->setParameter('user', $value);
 
         try {
-            /** @var LifestyleProfile $user */
-            $user =$qb->getQuery()->getOneOrNullResult();
-            if($user){
-                return ['is_create' => true];
+            /** @var LifestyleProfile $lifestyleProfile */
+            $lifestyleProfile =$qb->getQuery()->getOneOrNullResult();
+            if($lifestyleProfile){
+                return ['is_valid' => true];
             }
 
-            return ['is_create' => false];
+            return ['is_valid' => false];
         } catch (NonUniqueResultException $e) {
-            return ['is_create' => false];
+            return ['is_valid' => false];
         }
     }
 }

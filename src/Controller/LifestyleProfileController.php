@@ -109,7 +109,7 @@ class LifestyleProfileController extends Controller
         $data = (array)json_decode($request->getContent());
 
         if (!isset($data['id'])) {
-            return $this->json(['is_create' => false]);
+            return $this->json(['is_valid' => false]);
         }
 
         $result = $this->getRepository()->isAlreadyCreate($data['id']);

@@ -34,121 +34,91 @@ class LifestyleProfile
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $nutrition_0;
+    private $nutrition_a;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $nutrition_1;
+    private $nutrition_b;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $nutrition_2;
+    private $nutrition_c;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $nutrition_3;
+    private $physical_activity_d;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $physical_activity_0;
+    private $physical_activity_e;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $physical_activity_1;
+    private $physical_activity_f;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $physical_activity_2;
+    private $preventive_behavior_g;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $physical_activity_3;
+    private $preventive_behavior_h;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $preventive_behavior_0;
+    private $preventive_behavior_i;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $preventive_behavior_1;
+    private $relationships_j;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $preventive_behavior_2;
+    private $relationships_k;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $preventive_behavior_3;
+    private $relationships_l;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $relationships_0;
+    private $stress_management_m;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $relationships_1;
+    private $stress_management_n;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $relationships_2;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $relationships_3;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $stress_management_0;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $stress_management_1;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $stress_management_2;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $stress_management_3;
+    private $stress_management_o;
 
     /**
      * @ManyToOne(targetEntity="App\Entity\User")
@@ -177,241 +147,161 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getNutrition1(): string
+    public function getNutritionB(): string
     {
-        return $this->nutrition_1;
+        return $this->nutrition_b;
     }
 
     /**
-     * @param string $nutrition_1
+     * @param string $nutrition_b
      */
-    public function setNutrition1(string $nutrition_1): void
+    public function setNutritionB(string $nutrition_b): void
     {
-        $this->nutrition_1 = $nutrition_1;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNutrition2(): string
-    {
-        return $this->nutrition_2;
-    }
-
-    /**
-     * @param string $nutrition_2
-     */
-    public function setNutrition2(string $nutrition_2): void
-    {
-        $this->nutrition_2 = $nutrition_2;
+        $this->nutrition_b = $nutrition_b;
     }
 
     /**
      * @return string
      */
-    public function getNutrition3(): string
+    public function getNutritionC(): string
     {
-        return $this->nutrition_3;
+        return $this->nutrition_c;
     }
 
     /**
-     * @param string $nutrition_3
+     * @param string $nutrition_c
      */
-    public function setNutrition3(string $nutrition_3): void
+    public function setNutritionC(string $nutrition_c): void
     {
-        $this->nutrition_3 = $nutrition_3;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhysicalActivity1(): string
-    {
-        return $this->physical_activity_1;
-    }
-
-    /**
-     * @param string $physical_activity_1
-     */
-    public function setPhysicalActivity1(string $physical_activity_1): void
-    {
-        $this->physical_activity_1 = $physical_activity_1;
+        $this->nutrition_c = $nutrition_c;
     }
 
     /**
      * @return string
      */
-    public function getPhysicalActivity2(): string
+    public function getPhysicalActivityE(): string
     {
-        return $this->physical_activity_2;
+        return $this->physical_activity_e;
     }
 
     /**
-     * @param string $physical_activity_2
+     * @param string $physical_activity_e
      */
-    public function setPhysicalActivity2(string $physical_activity_2): void
+    public function setPhysicalActivityE(string $physical_activity_e): void
     {
-        $this->physical_activity_2 = $physical_activity_2;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhysicalActivity3(): string
-    {
-        return $this->physical_activity_3;
-    }
-
-    /**
-     * @param string $physical_activity_3
-     */
-    public function setPhysicalActivity3(string $physical_activity_3): void
-    {
-        $this->physical_activity_3 = $physical_activity_3;
+        $this->physical_activity_e = $physical_activity_e;
     }
 
     /**
      * @return string
      */
-    public function getPreventiveBehavior1(): string
+    public function getPhysicalActivityF(): string
     {
-        return $this->preventive_behavior_1;
+        return $this->physical_activity_f;
     }
 
     /**
-     * @param string $preventive_behavior_1
+     * @param string $physical_activity_f
      */
-    public function setPreventiveBehavior1(string $preventive_behavior_1): void
+    public function setPhysicalActivityF(string $physical_activity_f): void
     {
-        $this->preventive_behavior_1 = $preventive_behavior_1;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPreventiveBehavior2(): string
-    {
-        return $this->preventive_behavior_2;
-    }
-
-    /**
-     * @param string $preventive_behavior_2
-     */
-    public function setPreventiveBehavior2(string $preventive_behavior_2): void
-    {
-        $this->preventive_behavior_2 = $preventive_behavior_2;
+        $this->physical_activity_f = $physical_activity_f;
     }
 
     /**
      * @return string
      */
-    public function getPreventiveBehavior3(): string
+    public function getPreventiveBehaviorH(): string
     {
-        return $this->preventive_behavior_3;
+        return $this->preventive_behavior_h;
     }
 
     /**
-     * @param string $preventive_behavior_3
+     * @param string $preventive_behavior_h
      */
-    public function setPreventiveBehavior3(string $preventive_behavior_3): void
+    public function setPreventiveBehaviorH(string $preventive_behavior_h): void
     {
-        $this->preventive_behavior_3 = $preventive_behavior_3;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRelationships1(): string
-    {
-        return $this->relationships_1;
-    }
-
-    /**
-     * @param string $relationships_1
-     */
-    public function setRelationships1(string $relationships_1): void
-    {
-        $this->relationships_1 = $relationships_1;
+        $this->preventive_behavior_h = $preventive_behavior_h;
     }
 
     /**
      * @return string
      */
-    public function getRelationships2(): string
+    public function getPreventiveBehaviorI(): string
     {
-        return $this->relationships_2;
+        return $this->preventive_behavior_i;
     }
 
     /**
-     * @param string $relationships_2
+     * @param string $preventive_behavior_i
      */
-    public function setRelationships2(string $relationships_2): void
+    public function setPreventiveBehaviorI(string $preventive_behavior_i): void
     {
-        $this->relationships_2 = $relationships_2;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRelationships3(): string
-    {
-        return $this->relationships_3;
-    }
-
-    /**
-     * @param string $relationships_3
-     */
-    public function setRelationships3(string $relationships_3): void
-    {
-        $this->relationships_3 = $relationships_3;
+        $this->preventive_behavior_i = $preventive_behavior_i;
     }
 
     /**
      * @return string
      */
-    public function getStressManagement1(): string
+    public function getRelationshipsK(): string
     {
-        return $this->stress_management_1;
+        return $this->relationships_k;
     }
 
     /**
-     * @param string $stress_management_1
+     * @param string $relationships_k
      */
-    public function setStressManagement1(string $stress_management_1): void
+    public function setRelationshipsK(string $relationships_k): void
     {
-        $this->stress_management_1 = $stress_management_1;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStressManagement2(): string
-    {
-        return $this->stress_management_2;
-    }
-
-    /**
-     * @param string $stress_management_2
-     */
-    public function setStressManagement2(string $stress_management_2): void
-    {
-        $this->stress_management_2 = $stress_management_2;
+        $this->relationships_k = $relationships_k;
     }
 
     /**
      * @return string
      */
-    public function getStressManagement3(): string
+    public function getRelationshipsL(): string
     {
-        return $this->stress_management_3;
+        return $this->relationships_l;
     }
 
     /**
-     * @param string $stress_management_3
+     * @param string $relationships_l
      */
-    public function setStressManagement3(string $stress_management_3): void
+    public function setRelationshipsL(string $relationships_l): void
     {
-        $this->stress_management_3 = $stress_management_3;
+        $this->relationships_l = $relationships_l;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStressManagementN(): string
+    {
+        return $this->stress_management_n;
+    }
+
+    /**
+     * @param string $stress_management_n
+     */
+    public function setStressManagementN(string $stress_management_n): void
+    {
+        $this->stress_management_n = $stress_management_n;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStressManagementO(): string
+    {
+        return $this->stress_management_o;
+    }
+
+    /**
+     * @param string $stress_management_o
+     */
+    public function setStressManagementO(string $stress_management_o): void
+    {
+        $this->stress_management_o = $stress_management_o;
     }
 
     /**
@@ -433,104 +323,99 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getNutrition0(): string
+    public function getNutritionA(): string
     {
-        return $this->nutrition_0;
+        return $this->nutrition_a;
     }
 
     /**
-     * @param string $nutrition_0
+     * @param string $nutrition_a
      */
-    public function setNutrition0(string $nutrition_0): void
+    public function setNutritionA(string $nutrition_a): void
     {
-        $this->nutrition_0 = $nutrition_0;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhysicalActivity0(): string
-    {
-        return $this->physical_activity_0;
-    }
-
-    /**
-     * @param string $physical_activity_0
-     */
-    public function setPhysicalActivity0(string $physical_activity_0): void
-    {
-        $this->physical_activity_0 = $physical_activity_0;
+        $this->nutrition_a = $nutrition_a;
     }
 
     /**
      * @return string
      */
-    public function getPreventiveBehavior0(): string
+    public function getPhysicalActivityD(): string
     {
-        return $this->preventive_behavior_0;
+        return $this->physical_activity_d;
     }
 
     /**
-     * @param string $preventive_behavior_0
+     * @param string $physical_activity_d
      */
-    public function setPreventiveBehavior0(string $preventive_behavior_0): void
+    public function setPhysicalActivityD(string $physical_activity_d): void
     {
-        $this->preventive_behavior_0 = $preventive_behavior_0;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRelationships0(): string
-    {
-        return $this->relationships_0;
-    }
-
-    /**
-     * @param string $relationships_0
-     */
-    public function setRelationships0(string $relationships_0): void
-    {
-        $this->relationships_0 = $relationships_0;
+        $this->physical_activity_d = $physical_activity_d;
     }
 
     /**
      * @return string
      */
-    public function getStressManagement0(): string
+    public function getPreventiveBehaviorG(): string
     {
-        return $this->stress_management_0;
+        return $this->preventive_behavior_g;
     }
 
     /**
-     * @param string $stress_management_0
+     * @param string $preventive_behavior_g
      */
-    public function setStressManagement0(string $stress_management_0): void
+    public function setPreventiveBehaviorG(string $preventive_behavior_g): void
     {
-        $this->stress_management_0 = $stress_management_0;
+        $this->preventive_behavior_g = $preventive_behavior_g;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRelationshipsJ(): string
+    {
+        return $this->relationships_j;
+    }
+
+    /**
+     * @param string $relationships_j
+     */
+    public function setRelationshipsJ(string $relationships_j): void
+    {
+        $this->relationships_j = $relationships_j;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStressManagementM(): string
+    {
+        return $this->stress_management_m;
+    }
+
+    /**
+     * @param string $stress_management_m
+     */
+    public function setStressManagementM(string $stress_management_m): void
+    {
+        $this->stress_management_m = $stress_management_m;
     }
 
     public function populate($data)
     {
-        $this->setNutrition0($data['nutrition_0']);
-        $this->setNutrition1($data['nutrition_1']);
-        $this->setNutrition2($data['nutrition_2']);
-        $this->setNutrition3($data['nutrition_3']);
-        $this->setPhysicalActivity0($data['physical_activity_0']);
-        $this->setPhysicalActivity1($data['physical_activity_1']);
-        $this->setPhysicalActivity2($data['physical_activity_2']);
-        $this->setPhysicalActivity3($data['physical_activity_3']);
-        $this->setPreventiveBehavior0($data['preventive_behavior_0']);
-        $this->setPreventiveBehavior1($data['preventive_behavior_1']);
-        $this->setPreventiveBehavior2($data['preventive_behavior_2']);
-        $this->setPreventiveBehavior3($data['preventive_behavior_3']);
-        $this->setRelationships0($data['relationships_0']);
-        $this->setRelationships1($data['relationships_1']);
-        $this->setRelationships2($data['relationships_2']);
-        $this->setRelationships3($data['relationships_3']);
-        $this->setStressManagement0($data['stress_management_0']);
-        $this->setStressManagement1($data['stress_management_1']);
-        $this->setStressManagement2($data['stress_management_2']);
-        $this->setStressManagement3($data['stress_management_3']);
+        $this->setNutritionA($data['nutrition_a']);
+        $this->setNutritionB($data['nutrition_b']);
+        $this->setNutritionC($data['nutrition_c']);
+        $this->setPhysicalActivityD($data['physical_activity_d']);
+        $this->setPhysicalActivityE($data['physical_activity_e']);
+        $this->setPhysicalActivityF($data['physical_activity_f']);
+        $this->setPreventiveBehaviorG($data['preventive_behavior_g']);
+        $this->setPreventiveBehaviorH($data['preventive_behavior_h']);
+        $this->setPreventiveBehaviorI($data['preventive_behavior_i']);
+        $this->setRelationshipsJ($data['relationships_j']);
+        $this->setRelationshipsK($data['relationships_k']);
+        $this->setRelationshipsL($data['relationships_l']);
+        $this->setStressManagementM($data['stress_management_m']);
+        $this->setStressManagementN($data['stress_management_n']);
+        $this->setStressManagementO($data['stress_management_o']);
     }
 }
