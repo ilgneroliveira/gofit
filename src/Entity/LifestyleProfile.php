@@ -402,20 +402,20 @@ class LifestyleProfile
 
     public function populate($data)
     {
-        $this->setNutritionA($data['nutrition_a']);
-        $this->setNutritionB($data['nutrition_b']);
-        $this->setNutritionC($data['nutrition_c']);
-        $this->setPhysicalActivityD($data['physical_activity_d']);
-        $this->setPhysicalActivityE($data['physical_activity_e']);
-        $this->setPhysicalActivityF($data['physical_activity_f']);
-        $this->setPreventiveBehaviorG($data['preventive_behavior_g']);
-        $this->setPreventiveBehaviorH($data['preventive_behavior_h']);
-        $this->setPreventiveBehaviorI($data['preventive_behavior_i']);
-        $this->setRelationshipsJ($data['relationships_j']);
-        $this->setRelationshipsK($data['relationships_k']);
-        $this->setRelationshipsL($data['relationships_l']);
-        $this->setStressManagementM($data['stress_management_m']);
-        $this->setStressManagementN($data['stress_management_n']);
-        $this->setStressManagementO($data['stress_management_o']);
+        if (isset($data['nutrition_a'])) $this->setNutritionA($data['nutrition_a']);
+        if (isset($data['nutrition_b'])) $this->setNutritionB($data['nutrition_b']);
+        if (isset($data['nutrition_c'])) $this->setNutritionC($data['nutrition_c']);
+        if (isset($data['physical_activity_d'])) $this->setPhysicalActivityD($data['physical_activity_d']);
+        if (isset($data['physical_activity_e'])) $this->setPhysicalActivityE($data['physical_activity_e']);
+        if (isset($data['physical_activity_f'])) $this->setPhysicalActivityF($data['physical_activity_f']);
+        if (isset($data['preventive_behavior_g'])) $this->setPreventiveBehaviorG($data['preventive_behavior_g']);
+        if (isset($data['preventive_behavior_h'])) $this->setPreventiveBehaviorH($data['preventive_behavior_h']);
+        if (isset($data['preventive_behavior_i'])) $this->setPreventiveBehaviorI($data['preventive_behavior_i']);
+        if (isset($data['relationships_j'])) $this->setRelationshipsJ($data['relationships_j']);
+        if (isset($data['relationships_k'])) $this->setRelationshipsK($data['relationships_k']);
+        if (isset($data['relationships_l'])) $this->setRelationshipsL($data['relationships_l']);
+        if (isset($data['stress_management_m'])) $this->setStressManagementM($data['stress_management_m']);
+        if (isset($data['stress_management_n'])) $this->setStressManagementN($data['stress_management_n']);
+        if (isset($data['stress_management_o'])) $this->setStressManagementO($data['stress_management_o']);
     }
 }
