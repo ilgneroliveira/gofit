@@ -131,7 +131,7 @@ class LifestyleProfile
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -147,7 +147,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getNutritionB(): string
+    public function getNutritionB(): ?string
     {
         return $this->nutrition_b;
     }
@@ -163,7 +163,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getNutritionC(): string
+    public function getNutritionC(): ?string
     {
         return $this->nutrition_c;
     }
@@ -179,7 +179,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getPhysicalActivityE(): string
+    public function getPhysicalActivityE(): ?string
     {
         return $this->physical_activity_e;
     }
@@ -195,7 +195,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getPhysicalActivityF(): string
+    public function getPhysicalActivityF(): ?string
     {
         return $this->physical_activity_f;
     }
@@ -211,7 +211,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getPreventiveBehaviorH(): string
+    public function getPreventiveBehaviorH(): ?string
     {
         return $this->preventive_behavior_h;
     }
@@ -227,7 +227,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getPreventiveBehaviorI(): string
+    public function getPreventiveBehaviorI(): ?string
     {
         return $this->preventive_behavior_i;
     }
@@ -243,7 +243,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getRelationshipsK(): string
+    public function getRelationshipsK(): ?string
     {
         return $this->relationships_k;
     }
@@ -259,7 +259,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getRelationshipsL(): string
+    public function getRelationshipsL(): ?string
     {
         return $this->relationships_l;
     }
@@ -275,7 +275,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getStressManagementN(): string
+    public function getStressManagementN(): ?string
     {
         return $this->stress_management_n;
     }
@@ -291,7 +291,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getStressManagementO(): string
+    public function getStressManagementO(): ?string
     {
         return $this->stress_management_o;
     }
@@ -323,7 +323,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getNutritionA(): string
+    public function getNutritionA(): ?string
     {
         return $this->nutrition_a;
     }
@@ -339,7 +339,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getPhysicalActivityD(): string
+    public function getPhysicalActivityD(): ?string
     {
         return $this->physical_activity_d;
     }
@@ -355,7 +355,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getPreventiveBehaviorG(): string
+    public function getPreventiveBehaviorG(): ?string
     {
         return $this->preventive_behavior_g;
     }
@@ -371,7 +371,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getRelationshipsJ(): string
+    public function getRelationshipsJ(): ?string
     {
         return $this->relationships_j;
     }
@@ -387,7 +387,7 @@ class LifestyleProfile
     /**
      * @return string
      */
-    public function getStressManagementM(): string
+    public function getStressManagementM(): ?string
     {
         return $this->stress_management_m;
     }
