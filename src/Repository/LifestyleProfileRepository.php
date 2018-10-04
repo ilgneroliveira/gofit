@@ -15,7 +15,13 @@ use Doctrine\ORM\NonUniqueResultException;
  */
 class LifestyleProfileRepository extends EntityRepository
 {
-    public function isAlreadyCreate($value)
+    /**
+     * @param $value
+     * @param $is_get
+     *
+     * @return LifestyleProfile|array
+     */
+    public function isAlreadyCreate($value, $is_get)
     {
         $qb = $this->createQueryBuilder('l');
         $qb->select('l');
@@ -26,6 +32,11 @@ class LifestyleProfileRepository extends EntityRepository
         try {
             /** @var LifestyleProfile $lifestyleProfile */
             $lifestyleProfile =$qb->getQuery()->getOneOrNullResult();
+
+            if($is_get){
+                return $lifestyleProfile;
+            }
+
             if($lifestyleProfile){
                 return ['is_valid' => true];
             }

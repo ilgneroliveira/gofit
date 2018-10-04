@@ -23,6 +23,7 @@ class LifestyleProfileController extends Controller
     public function index(): Response
     {
         $lifestyleProfiles = $this->getRepository()->findAll();
+
         return $this->json($lifestyleProfiles);
     }
 
@@ -37,7 +38,9 @@ class LifestyleProfileController extends Controller
         $user = $this->getUserRepository()->find($data['user_id']);
 
         if ($user === null) {
-            return $this->json(['success' => 0, 'message' => 'Perfil do estilo de vida não salvo, dados do usuário não encontrado']);
+            return $this->json(
+                ['success' => 0, 'message' => 'Perfil do estilo de vida não salvo, dados do usuário não encontrado']
+            );
         }
 
         $lifestyle_profile = new LifestyleProfile();
@@ -50,9 +53,15 @@ class LifestyleProfileController extends Controller
             $em->flush();
 
             $result = ['success' => 1, 'message' => 'Perfil do estilo de vida salvo'];
+
             return $this->json($result);
         } catch (\Exception $exception) {
-            $result = ['success' => 0, 'message' => 'Perfil do estilo de vida não salvo', 'error' => $exception->getMessage()];
+            $result = [
+                'success' => 0,
+                'message' => 'Perfil do estilo de vida não salvo',
+                'error' => $exception->getMessage(),
+            ];
+
             return $this->json($result);
         }
     }
@@ -79,10 +88,13 @@ class LifestyleProfileController extends Controller
             return $this->redirectToRoute('lifestyle_profile_edit', ['id' => $lifestyleProfile->getId()]);
         }
 
-        return $this->render('lifestyle_profile/edit.html.twig', [
-            'lifestyle_profile' => $lifestyleProfile,
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'lifestyle_profile/edit.html.twig',
+            [
+                'lifestyle_profile' => $lifestyleProfile,
+                'form' => $form->createView(),
+            ]
+        );
     }
 
     /**
@@ -112,7 +124,9 @@ class LifestyleProfileController extends Controller
             return $this->json(['is_valid' => false]);
         }
 
-        $result = $this->getRepository()->isAlreadyCreate($data['id']);
+        $is_get = isset($data['is_get']) ? $data['is_get'] : false;
+
+        $result = $this->getRepository()->isAlreadyCreate($data['id'], $is_get);
 
         return $this->json($result);
     }
