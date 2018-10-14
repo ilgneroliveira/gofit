@@ -74,31 +74,13 @@ class Exercise
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    protected $weight_question_one;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
     protected $question_two;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    protected $weight_question_two;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
     protected $question_three;
-
-    /**
-     * @Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    protected $weight_question_three;
 
     /**
      * @return int
@@ -215,22 +197,6 @@ class Exercise
     /**
      * @return string
      */
-    public function getWeightQuestionOne()
-    {
-        return $this->weight_question_one;
-    }
-
-    /**
-     * @param string $weight_question_one
-     */
-    public function setWeightQuestionOne(string $weight_question_one): void
-    {
-        $this->weight_question_one = $weight_question_one;
-    }
-
-    /**
-     * @return string
-     */
     public function getQuestionTwo()
     {
         return $this->question_two;
@@ -247,22 +213,6 @@ class Exercise
     /**
      * @return string
      */
-    public function getWeightQuestionTwo()
-    {
-        return $this->weight_question_two;
-    }
-
-    /**
-     * @param string $weight_question_two
-     */
-    public function setWeightQuestionTwo(string $weight_question_two): void
-    {
-        $this->weight_question_two = $weight_question_two;
-    }
-
-    /**
-     * @return string
-     */
     public function getQuestionThree()
     {
         return $this->question_three;
@@ -274,22 +224,6 @@ class Exercise
     public function setQuestionThree(string $question_three): void
     {
         $this->question_three = $question_three;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWeightQuestionThree()
-    {
-        return $this->weight_question_three;
-    }
-
-    /**
-     * @param string $weight_question_three
-     */
-    public function setWeightQuestionThree(string $weight_question_three): void
-    {
-        $this->weight_question_three = $weight_question_three;
     }
 
     /**

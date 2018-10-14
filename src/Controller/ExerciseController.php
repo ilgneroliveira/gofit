@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Exercise;
+use App\Entity\LifestyleProfile;
 use App\Entity\ScheduleExercise;
 use App\Entity\User;
 use App\Enum\MediaType;
 use App\Form\ExerciseType;
+use App\Manager\RecommedationManager;
 use App\Repository\ExerciseRepository;
+use App\Repository\LifestyleProfileRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,6 +71,25 @@ class ExerciseController extends Controller
     }
 
     /**
+     * @Route("/recommendation", name="recommendation", methods="POST")
+     */
+    public function recommendation(Request $request): Response
+    {
+        $data = (array)json_decode($request->getContent());
+
+        if (!isset($data['id'])) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        $lifestyle_profile = $this->getLifestyleProfileRepository()->isAlreadyCreate($data['id'], true);
+        $exercises = $this->getRepository()->findAll();
+
+        $manager = new RecommedationManager($this->getDoctrine(), $data['id']);
+
+        return $this->json($manager->process($lifestyle_profile, $exercises));
+    }
+
+    /**
      * @Route("/{id}", name="exercise_show", methods="GET")
      */
     public function show(Exercise $exercise): Response
@@ -118,10 +140,10 @@ class ExerciseController extends Controller
     }
 
     /**
-     * @return UserRepository|\Doctrine\Common\Persistence\ObjectRepository
+     * @return LifestyleProfileRepository|\Doctrine\Common\Persistence\ObjectRepository
      */
-    private function getUserRepository()
+    private function getLifestyleProfileRepository()
     {
-        return $this->getDoctrine()->getRepository(User::class);
+        return $this->getDoctrine()->getRepository(LifestyleProfile::class);
     }
 }
