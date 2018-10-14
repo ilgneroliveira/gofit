@@ -91,7 +91,7 @@ class ExerciseController extends Controller
 
         $manager = new RecommedationManager($this->getDoctrine(), $data['id']);
 
-        return $this->json($manager->process($lifestyle_profile, $exercises));
+        return $this->json(['exercises' => $manager->process($lifestyle_profile, $exercises)]);
     }
 
     /**
