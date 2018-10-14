@@ -26,8 +26,9 @@ class LifestyleProfileRepository extends EntityRepository
         $qb = $this->createQueryBuilder('l');
         $qb->select('l');
 
-        $qb->where("l.user = :user")
-            ->setParameter('user', $value);
+        $qb->leftJoin('l.user','u')
+            ->where("u.login = :login")
+            ->setParameter('login', $value);
 
         try {
             /** @var LifestyleProfile $lifestyleProfile */
