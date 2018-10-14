@@ -37,7 +37,7 @@ class RecommedationManager
     public function __construct(ManagerRegistry $doctrine, $user_id)
     {
         $this->doctrine = $doctrine;
-        $this->user = $this->getUserRepository()->find($user_id);
+        $this->user = $this->getUserRepository()->findBy(['login' => $user_id]);
         $this->exercises_process = $this->findExercisesProcess();
     }
 
