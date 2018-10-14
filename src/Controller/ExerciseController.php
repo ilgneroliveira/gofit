@@ -82,6 +82,11 @@ class ExerciseController extends Controller
         }
 
         $lifestyle_profile = $this->getLifestyleProfileRepository()->isAlreadyCreate($data['id'], true);
+
+        if($lifestyle_profile === null){
+            return $this->json([]);
+        }
+
         $exercises = $this->getRepository()->findAll();
 
         $manager = new RecommedationManager($this->getDoctrine(), $data['id']);

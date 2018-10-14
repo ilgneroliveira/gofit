@@ -39,7 +39,6 @@ class RecommedationManager
         $this->doctrine = $doctrine;
         $this->user = $this->getUserRepository()->find($user_id);
         $this->exercises_process = $this->findExercisesProcess();
-
     }
 
     /**
