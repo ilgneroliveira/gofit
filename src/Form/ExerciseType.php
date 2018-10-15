@@ -17,11 +17,8 @@ class ExerciseType extends AbstractType
             ->add('media_url')
             ->add('media_type')
             ->add('question_one')
-            ->add('weight_question_one')
             ->add('question_two')
-            ->add('weight_question_two')
             ->add('question_three')
-            ->add('weight_question_three')
             ->add('featured_image_url')
         ;
     }
