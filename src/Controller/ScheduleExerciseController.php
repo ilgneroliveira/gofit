@@ -37,7 +37,7 @@ class ScheduleExerciseController extends Controller
         $data = (array)json_decode($request->getContent());
 
         /** @var User $user */
-        $user = $this->getUserRepository()->find($data['user_id']);
+        $user = $this->getUserRepository()->find(['login' => $data['user_id']]);
 
         if ($user === null) {
             return $this->json(['success' => 0, 'message' => 'Agedamento não efetuado, dados do usuário não encontrado']);
@@ -81,7 +81,7 @@ class ScheduleExerciseController extends Controller
     {
         $data = (array)json_decode($request->getContent());
         /** @var User $user */
-        $user = $this->getUserRepository()->find($data['user_id']);
+        $user = $this->getUserRepository()->find(['login' => $data['user_id']]);
         if ($user === null) {
             return $this->json(['success' => 0, 'message' => 'Dados do usuário não encontrado']);
         }
