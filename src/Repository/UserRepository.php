@@ -45,6 +45,12 @@ class UserRepository extends EntityRepository
         }
     }
 
+    /**
+     * @param      $value
+     * @param bool $is_email
+     *
+     * @return array
+     */
     public function isAlreadyRegistered($value, $is_email = false)
     {
         $qb = $this->createQueryBuilder('u');

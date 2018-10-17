@@ -64,7 +64,7 @@ class UserController extends Controller
         $user->populate((array)json_decode($request->getContent()));
 
         $retorno = $this->getRepository()->isAlreadyRegistered($user->getEmail(), true);
-        if(!$retorno['is_valid']){
+        if($retorno['is_valid']){
             $result = ['success' => 0, 'message' => 'Cadastro não foi salvo, Email já cadastrado', 'error' => '1'];
             return $this->json($result);
         }
