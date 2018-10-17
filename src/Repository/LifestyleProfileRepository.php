@@ -44,7 +44,7 @@ class LifestyleProfileRepository extends EntityRepository
 
             return ['is_valid' => false];
         } catch (NonUniqueResultException $e) {
-            return ['is_valid' => false];
+            return ['is_valid' => false, 'erro' => $e->getMessage()];
         }
     }
 }

@@ -37,7 +37,7 @@ class RecommedationManager
     public function __construct(ManagerRegistry $doctrine, $user_id)
     {
         $this->doctrine = $doctrine;
-        $this->user = $this->getUserRepository()->findBy(['login' => $user_id]);
+        $this->user = $this->getUserRepository()->findOneBy(['login' => $user_id]);
         $this->exercises_process = $this->findExercisesProcess();
     }
 
@@ -112,7 +112,7 @@ class RecommedationManager
     private function findExercisesProcess()
     {
         if (empty($this->exercises_process)) {
-            $exercises_process = $this->getExerciseRecommedationRepository()->findBy(['user' => $this->user]);
+            $exercises_process = $this->getExerciseRecommedationRepository()->findOneBy(['user' => $this->user]);
 
             /** @var ExerciseRecommedation $exercise_process */
             foreach ($exercises_process as $exercise_process) {
