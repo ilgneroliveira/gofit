@@ -112,7 +112,7 @@ class RecommedationManager
     private function findExercisesProcess()
     {
         if (empty($this->exercises_process)) {
-            $exercises_process = $this->getExerciseRecommedationRepository()->findOneBy(['user' => $this->user]);
+            $exercises_process = $this->getExerciseRecommedationRepository()->findBy(['user' => $this->user]);
 
             /** @var ExerciseRecommedation $exercise_process */
             foreach ($exercises_process as $exercise_process) {
