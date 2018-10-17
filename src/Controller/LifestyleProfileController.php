@@ -35,7 +35,7 @@ class LifestyleProfileController extends Controller
         $data = (array)json_decode($request->getContent());
 
         /** @var User $user */
-        $user = $this->getUserRepository()->findBy(["login" => $data['user_id']]);
+        $user = $this->getUserRepository()->findOneBy(["login" => $data['user_id']]);
 
         if ($user === null) {
             return $this->json(
