@@ -5,10 +5,11 @@ namespace App\Manager;
 
 use App\Entity\Exercise;
 use App\Entity\ExerciseRecommedation;
+use App\Entity\ExercisesDone;
 use App\Entity\LifestyleProfile;
 use App\Entity\User;
 use App\Repository\ExerciseRecommedationRepository;
-use App\Repository\ExerciseRepository;
+use App\Repository\ExercisesDoneRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -22,7 +23,7 @@ class RecommedationManager
     /** @var ExerciseRecommedation[] */
     public $exercises_process;
 
-    /** @var User  */
+    /** @var User */
     public $user;
 
     /** @var ManagerRegistry */
@@ -76,7 +77,33 @@ class RecommedationManager
             $em->flush();
         }
 
-        return $this->getExerciseRecommedationRepository()->findBy([], ['distance' => 'ASC']);
+        $exercises = $this->getExerciseRecommedationRepository()->findBy([], ['distance' => 'ASC']);
+
+        $qb_sub = $this->getExerciseRecommedationRepository()->createQueryBuilder('ed');
+        $qb_sub->select('e.id')
+            ->leftJoin('ed.exercise', 'e')
+            ->groupBy('ed.exercise')
+            ->addOrderBy('COUNT(ed)', 'DESC')
+            ->getQuery()->getArrayResult();
+
+        $qb = $this->getExercisesDoneRepository()->createQueryBuilder('t');
+        $qb->select('t')
+            ->leftJoin('t.exercise', 'te')
+            ->setMaxResults(10)
+            ->addOrderBy('t.distance', 'ASC')
+            ->where(
+                $qb->expr()->in(
+                    'te.id',
+                    $qb_sub
+                        ->getDQL()
+                )
+            );
+        $exercises_done = $qb->getQuery()->getResult();
+
+        return [
+            'exercises' => $exercises,
+            'exercises_done' => $exercises_done,
+        ];
     }
 
     /**
@@ -86,7 +113,7 @@ class RecommedationManager
      */
     public function isProcess(Exercise $exercise)
     {
-        if(!$this->exercises_process){
+        if (!$this->exercises_process) {
             return false;
         }
 
@@ -99,6 +126,14 @@ class RecommedationManager
     private function getExerciseRecommedationRepository()
     {
         return $this->getDoctrine()->getRepository(ExerciseRecommedation::class);
+    }
+
+    /**
+     * @return ExercisesDoneRepository|\Doctrine\Common\Persistence\ObjectRepository
+     */
+    private function getExercisesDoneRepository()
+    {
+        return $this->getDoctrine()->getRepository(ExercisesDone::class);
     }
 
     /**

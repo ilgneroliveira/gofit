@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Exercise;
+use App\Entity\ExerciseRecommedation;
+use App\Entity\ExercisesDone;
 use App\Entity\LifestyleProfile;
-use App\Entity\ScheduleExercise;
-use App\Entity\User;
-use App\Enum\MediaType;
 use App\Form\ExerciseType;
 use App\Manager\RecommedationManager;
+use App\Repository\ExerciseRecommedationRepository;
 use App\Repository\ExerciseRepository;
+use App\Repository\ExercisesDoneRepository;
 use App\Repository\LifestyleProfileRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +24,7 @@ class ExerciseController extends Controller
 {
     /**
      * @Route("/", name="exercise_index", methods="GET")
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function index(): Response
     {
@@ -48,10 +49,13 @@ class ExerciseController extends Controller
             return $this->redirectToRoute('exercise_index');
         }
 
-        return $this->render('exercise/new.html.twig', [
-            'exercise' => $exercise,
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'exercise/new.html.twig',
+            [
+                'exercise' => $exercise,
+                'form' => $form->createView(),
+            ]
+        );
     }
 
     /**
@@ -83,7 +87,7 @@ class ExerciseController extends Controller
 
         $lifestyle_profile = $this->getLifestyleProfileRepository()->isAlreadyCreate($data['id'], true);
 
-        if($lifestyle_profile === null){
+        if ($lifestyle_profile === null) {
             return $this->json([]);
         }
 
@@ -91,7 +95,7 @@ class ExerciseController extends Controller
 
         $manager = new RecommedationManager($this->getDoctrine(), $data['id']);
 
-        return $this->json(['exercises' => $manager->process($lifestyle_profile, $exercises)]);
+        return $this->json($manager->process($lifestyle_profile, $exercises));
     }
 
     /**
@@ -116,10 +120,13 @@ class ExerciseController extends Controller
             return $this->redirectToRoute('exercise_edit', ['id' => $exercise->getId()]);
         }
 
-        return $this->render('exercise/edit.html.twig', [
-            'exercise' => $exercise,
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'exercise/edit.html.twig',
+            [
+                'exercise' => $exercise,
+                'form' => $form->createView(),
+            ]
+        );
     }
 
     /**
@@ -127,7 +134,7 @@ class ExerciseController extends Controller
      */
     public function delete(Request $request, Exercise $exercise): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $exercise->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$exercise->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($exercise);
             $em->flush();

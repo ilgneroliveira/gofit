@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -44,6 +45,18 @@ class ExercisesDone
     private $exercise;
 
     /**
+     * @Column(type="datetime", nullable=true)
+     * @var DateTime
+     */
+    private $execute_at;
+
+    /**
+     * @Column(type="time", nullable=true)
+     * @var DateTime
+     */
+    private $time_execute;
+
+    /**
      * @return User
      */
     public function getUser()
@@ -73,5 +86,37 @@ class ExercisesDone
     public function setExercise($exercise)
     {
         $this->exercise = $exercise;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getExecuteAt()
+    {
+        return $this->execute_at;
+    }
+
+    /**
+     * @param DateTime $execute_at
+     */
+    public function setExecuteAt(DateTime $execute_at): void
+    {
+        $this->execute_at = $execute_at;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getTimeExecute()
+    {
+        return $this->time_execute;
+    }
+
+    /**
+     * @param DateTime $time_execute
+     */
+    public function setTimeExecute(DateTime $time_execute): void
+    {
+        $this->time_execute = $time_execute;
     }
 }
