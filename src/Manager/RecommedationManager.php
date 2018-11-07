@@ -79,14 +79,14 @@ class RecommedationManager
 
         $exercises = $this->getExerciseRecommedationRepository()->findBy([], ['distance' => 'ASC']);
 
-        $qb_sub = $this->getExerciseRecommedationRepository()->createQueryBuilder('ed');
+        $qb_sub = $this->getExercisesDoneRepository()->createQueryBuilder('ed');
         $qb_sub->select('e.id')
             ->leftJoin('ed.exercise', 'e')
             ->groupBy('ed.exercise')
             ->addOrderBy('COUNT(ed)', 'DESC')
             ->getQuery()->getArrayResult();
 
-        $qb = $this->getExercisesDoneRepository()->createQueryBuilder('t');
+        $qb = $this->getExerciseRecommedationRepository()->createQueryBuilder('t');
         $qb->select('t')
             ->leftJoin('t.exercise', 'te')
             ->setMaxResults(10)
