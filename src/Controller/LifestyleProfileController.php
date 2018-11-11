@@ -104,7 +104,7 @@ class LifestyleProfileController extends Controller
     public function editSave(Request $request, LifestyleProfile $lifestyleProfile): Response
     {
         $data = (array)json_decode($request->getContent());
-        return $this->json($data);
+        return $this->json($lifestyleProfile);
         $lifestyleProfile->populate($data);
 
         try {
