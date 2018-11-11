@@ -99,14 +99,29 @@ class LifestyleProfileController extends Controller
 
 
     /**
-     * @Route("/{id}/save", name="lifestyle_profile_edit_save", methods="GET|POST")
+     * @Route("/{id}/save", name="lifestyle_profile_edit_save", methods="POST")
      */
     public function editSave(Request $request, LifestyleProfile $lifestyleProfile): Response
     {
-        $this->getDoctrine()->getManager()->flush();
-        $result = ['success' => 1, 'message' => 'Perfil do estilo de vida salvo'];
+        $data = (array)json_decode($request->getContent());
+        $lifestyleProfile->populate($data);
 
-        return $this->json($result);
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $result = ['success' => 1, 'message' => 'Perfil do estilo de vida salvo'];
+
+            return $this->json($result);
+        } catch (\Exception $exception) {
+            $result = [
+                'success' => 0,
+                'message' => 'Perfil do estilo de vida não salvo',
+                'error' => $exception->getMessage(),
+            ];
+
+            return $this->json($result);
+        }
     }
 
     /**
