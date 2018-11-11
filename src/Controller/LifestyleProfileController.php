@@ -105,7 +105,6 @@ class LifestyleProfileController extends Controller
     {
         $data = (array)json_decode($request->getContent());
         $lifestyleProfile->populate($data);
-        return $this->json($lifestyleProfile);
 
         try {
             $em = $this->getDoctrine()->getManager();
