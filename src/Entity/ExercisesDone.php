@@ -51,8 +51,8 @@ class ExercisesDone
     private $execute_at;
 
     /**
-     * @Column(type="time", nullable=true)
-     * @var DateTime
+     * @Column(type="string", nullable=true)
+     * @var string
      */
     private $time_execute;
 
@@ -105,7 +105,7 @@ class ExercisesDone
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
     public function getTimeExecute()
     {
@@ -113,9 +113,9 @@ class ExercisesDone
     }
 
     /**
-     * @param DateTime $time_execute
+     * @param string $time_execute
      */
-    public function setTimeExecute(DateTime $time_execute): void
+    public function setTimeExecute(string $time_execute): void
     {
         $this->time_execute = $time_execute;
     }
