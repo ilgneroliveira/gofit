@@ -97,6 +97,18 @@ class LifestyleProfileController extends Controller
         );
     }
 
+
+    /**
+     * @Route("/{id}/save", name="lifestyle_profile_edit_save", methods="GET|POST")
+     */
+    public function editSave(Request $request, LifestyleProfile $lifestyleProfile): Response
+    {
+        $this->getDoctrine()->getManager()->flush();
+        $result = ['success' => 1, 'message' => 'Perfil do estilo de vida salvo'];
+
+        return $this->json($result);
+    }
+
     /**
      * @Route("/{id}", name="lifestyle_profile_delete", methods="DELETE")
      */
