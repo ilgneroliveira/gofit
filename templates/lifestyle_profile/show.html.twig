@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LifestyleProfile{% endblock %}
+
+{% block body %}
+    <h1>LifestyleProfile</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lifestyle_profile.id }}</td>
+            </tr>
+            <tr>
+                <th>Nutrition</th>
+                <td>{{ lifestyle_profile.nutrition }}</td>
+            </tr>
+            <tr>
+                <th>Physical_activity</th>
+                <td>{{ lifestyle_profile.physical_activity }}</td>
+            </tr>
+            <tr>
+                <th>Preventive_behavior</th>
+                <td>{{ lifestyle_profile.preventive_behavior }}</td>
+            </tr>
+            <tr>
+                <th>Relationships</th>
+                <td>{{ lifestyle_profile.relationships }}</td>
+            </tr>
+            <tr>
+                <th>Stress_management</th>
+                <td>{{ lifestyle_profile.stress_management }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('lifestyle_profile_index') }}">back to list</a>
+
+    <a href="{{ path('lifestyle_profile_edit', {'id': lifestyle_profile.id}) }}">edit</a>
+
+    {{ include('lifestyle_profile/_delete_form.html.twig') }}
+{% endblock %}

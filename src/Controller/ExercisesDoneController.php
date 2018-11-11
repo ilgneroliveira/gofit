@@ -3,16 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Exercise;
-use App\Entity\ExerciseRecommedation;
 use App\Entity\ExercisesDone;
-use App\Entity\LifestyleProfile;
 use App\Entity\User;
-use App\Form\ExerciseType;
-use App\Manager\RecommedationManager;
-use App\Repository\ExerciseRecommedationRepository;
+use App\Form\ExercisesDoneType;
 use App\Repository\ExerciseRepository;
 use App\Repository\ExercisesDoneRepository;
-use App\Repository\LifestyleProfileRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,16 +17,15 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/exercises/done")
  */
-class ExerciseDoneController extends Controller
+class ExercisesDoneController extends Controller
 {
     /**
-     * @Route("/", name="exercise_done_index", methods="GET")
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @Route("/", name="exercises_done_index", methods="GET")
      */
     public function index(): Response
     {
-        $users = $this->getRepository()->findAll();
-        return $this->json($users);
+        $exercisesDone = $this->getRepository()->findAll();
+        return $this->json($exercisesDone);
     }
 
     /**
@@ -85,11 +79,31 @@ class ExerciseDoneController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="exercise_done_show", methods="GET")
+     * @Route("/{id}", name="exercises_done_show", methods="GET")
      */
-    public function show(ExercisesDone $exercise): Response
+    public function show(ExercisesDone $exercisesDone): Response
     {
-        return $this->json($exercise);
+        return $this->json($exercisesDone);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="exercises_done_edit", methods="GET|POST")
+     */
+    public function edit(Request $request, ExercisesDone $exercisesDone): Response
+    {
+        $form = $this->createForm(ExercisesDoneType::class, $exercisesDone);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('exercises_done_edit', ['id' => $exercisesDone->getId()]);
+        }
+
+        return $this->render('exercises_done/edit.html.twig', [
+            'exercises_done' => $exercisesDone,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
