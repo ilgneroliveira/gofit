@@ -12,12 +12,21 @@ class LifestyleProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nutrition')
-            ->add('physical_activity')
-            ->add('preventive_behavior')
-            ->add('relationships')
-            ->add('stress_management')
-            ->add('user')
+            ->add('nutrition_a')
+            ->add('nutrition_b')
+            ->add('nutrition_c')
+            ->add('physical_activity_d')
+            ->add('physical_activity_e')
+            ->add('physical_activity_f')
+            ->add('preventive_behavior_g')
+            ->add('preventive_behavior_h')
+            ->add('preventive_behavior_i')
+            ->add('relationships_j')
+            ->add('relationships_k')
+            ->add('relationships_l')
+            ->add('stress_management_m')
+            ->add('stress_management_n')
+            ->add('stress_management_o')
         ;
     }
 

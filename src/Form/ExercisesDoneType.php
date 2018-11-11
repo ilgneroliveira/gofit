@@ -13,10 +13,7 @@ class ExercisesDoneType extends AbstractType
     {
         $builder
             ->add('execute_at')
-            ->add('time_execute')
-            ->add('user')
-            ->add('exercise')
-        ;
+            ->add('time_execute');
     }
 
     public function configureOptions(OptionsResolver $resolver)
