@@ -107,6 +107,22 @@ class ExercisesDoneController extends Controller
     }
 
     /**
+     * @Route("/user", name="find_user", methods="POST")
+     */
+    public function findByUser(Request $request): Response
+    {
+        $data = (array)json_decode($request->getContent());
+
+        if (!isset($data['id'])) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        $result = $this->getRepository()->findBy(['user' => $data['id']]);
+
+        return $this->json(['exercisesDone' => $result]);
+    }
+
+    /**
      * @return ExercisesDoneRepository|\Doctrine\Common\Persistence\ObjectRepository
      */
     private function getRepository()
