@@ -117,7 +117,14 @@ class ExercisesDoneController extends Controller
             return $this->json(['is_valid' => false]);
         }
 
-        $result = $this->getRepository()->findBy(['user' => $data['id']]);
+        /** @var User $user */
+        $user = $this->getUserRepository()->findOneBy(["login" => $data['id']]);
+
+        if (!$user) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        $result = $this->getRepository()->findBy(['user' => $user]);
 
         return $this->json(['exercisesDone' => $result]);
     }
