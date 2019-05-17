@@ -15,6 +15,7 @@ class ExerciseType extends AbstractType
             ->add('title')
             ->add('amount_executed')
             ->add('media_url')
+            ->add('description')
             ->add('media_type')
             ->add('question_one')
             ->add('question_two')
