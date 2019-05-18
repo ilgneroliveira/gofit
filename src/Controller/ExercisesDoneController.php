@@ -132,7 +132,9 @@ class ExercisesDoneController extends Controller
             ->where('t.user = :user')
             ->setParameter('user', $user)
             ->distinct()
-            ->addOrderBy('id', 'DESC');
+            ->addOrderBy('id', 'DESC')
+            ->getQuery()
+            ->getResult();
 
         return $this->json(['exercisesDone' => $result]);
     }
