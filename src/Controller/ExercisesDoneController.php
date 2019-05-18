@@ -132,7 +132,7 @@ class ExercisesDoneController extends Controller
             ->where('t.user = :user')
             ->setParameter('user', $user)
             ->distinct()
-            ->addOrderBy('id', 'DESC')
+            ->addOrderBy('t.id', 'DESC')
             ->getQuery()
             ->getResult();
 
