@@ -25,6 +25,7 @@ class ExercisesDoneController extends Controller
     public function index(): Response
     {
         $exercisesDone = $this->getRepository()->findAll();
+
         return $this->json($exercisesDone);
     }
 
@@ -100,10 +101,13 @@ class ExercisesDoneController extends Controller
             return $this->redirectToRoute('exercises_done_edit', ['id' => $exercisesDone->getId()]);
         }
 
-        return $this->render('exercises_done/edit.html.twig', [
-            'exercises_done' => $exercisesDone,
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'exercises_done/edit.html.twig',
+            [
+                'exercises_done' => $exercisesDone,
+                'form' => $form->createView(),
+            ]
+        );
     }
 
     /**
@@ -124,7 +128,41 @@ class ExercisesDoneController extends Controller
             return $this->json(['is_valid' => false]);
         }
 
-        $result = $this->getRepository()->findBy(['user' => $user]);
+        $result = $this->getRepository()->createQueryBuilder('t')
+            ->where('t.user = :user')
+            ->setParameter('user', $user)
+            ->distinct()
+            ->addOrderBy('id', 'DESC');
+
+        return $this->json(['exercisesDone' => $result]);
+    }
+
+    /**
+     * @Route("/user/exercise", name="find_user_and_exercise", methods="POST")
+     */
+    public function findByUserAndExercise(Request $request): Response
+    {
+        $data = (array)json_decode($request->getContent());
+
+        if (!isset($data['id'])) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        /** @var User $user */
+        $user = $this->getUserRepository()->findOneBy(["login" => $data['id']]);
+
+        if (!$user) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        /** @var Exercise $exercise */
+        $exercise = $this->getExerciseRepository()->findOneBy(["id" => $data['exercise_id']]);
+
+        if ($exercise === null) {
+            return $this->json(['is_valid' => false]);
+        }
+
+        $result = $this->getRepository()->findBy(['user' => $user, 'exercise' => $exercise], ['id' => 'DESC']);
 
         return $this->json(['exercisesDone' => $result]);
     }
@@ -144,6 +182,7 @@ class ExercisesDoneController extends Controller
     {
         return $this->getDoctrine()->getRepository(Exercise::class);
     }
+
     /**
      * @return UserRepository|\Doctrine\Common\Persistence\ObjectRepository
      */
