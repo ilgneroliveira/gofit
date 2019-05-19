@@ -134,7 +134,7 @@ class ExercisesDoneController extends Controller
             ->distinct()
             ->addOrderBy('t.id', 'DESC')
             ->getQuery()
-            ->getResult();
+            ->getSQL();
 
         return $this->json(['exercisesDone' => $result]);
     }
