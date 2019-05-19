@@ -133,7 +133,7 @@ class ExercisesDoneController extends Controller
             ->join('t.exercise', 'e')
             ->setParameter('user', $user)
             ->addOrderBy('t.id', 'DESC')
-            ->groupBy('e.id')
+            ->groupBy('e')
             ->getQuery()
             ->getResult();
 
