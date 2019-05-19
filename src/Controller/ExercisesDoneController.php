@@ -131,10 +131,10 @@ class ExercisesDoneController extends Controller
         $result = $this->getRepository()->createQueryBuilder('t')
             ->where('t.user = :user')
             ->setParameter('user', $user)
-            ->distinct()
             ->addOrderBy('t.id', 'DESC')
+            ->groupBy('t.exercise')
             ->getQuery()
-            ->getSQL();
+            ->getResult();
 
         return $this->json(['exercisesDone' => $result]);
     }
