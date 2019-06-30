@@ -34,13 +34,13 @@ class LifestyleProfile
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $nutrition_a;
+    private $nutritionA;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $nutrition_b;
+    private $nutritionB;
 
     /**
      * @Column(type="string", length=255, nullable=true)
@@ -52,37 +52,37 @@ class LifestyleProfile
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $physical_activity_d;
+    private $physicalActivity_d;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $physical_activity_e;
+    private $physicalActivity_e;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $physical_activity_f;
+    private $physicalActivity_f;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $preventive_behavior_g;
+    private $preventiveBehavior_g;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $preventive_behavior_h;
+    private $preventiveBehavior_h;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $preventive_behavior_i;
+    private $preventiveBehavior_i;
 
     /**
      * @Column(type="string", length=255, nullable=true)
@@ -106,19 +106,19 @@ class LifestyleProfile
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $stress_management_m;
+    private $stressManagementM;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $stress_management_n;
+    private $stressManagement_n;
 
     /**
      * @Column(type="string", length=255, nullable=true)
      * @var string
      */
-    private $stress_management_o;
+    private $stressManagement_o;
 
     /**
      * @ManyToOne(targetEntity="App\Entity\User")
@@ -149,15 +149,15 @@ class LifestyleProfile
      */
     public function getNutritionB(): ?string
     {
-        return $this->nutrition_b;
+        return $this->nutritionB;
     }
 
     /**
-     * @param string $nutrition_b
+     * @param string $nutritionB
      */
-    public function setNutritionB(string $nutrition_b): void
+    public function setNutritionB(string $nutritionB): void
     {
-        $this->nutrition_b = $nutrition_b;
+        $this->nutritionB = $nutritionB;
     }
 
     /**
@@ -181,15 +181,15 @@ class LifestyleProfile
      */
     public function getPhysicalActivityE(): ?string
     {
-        return $this->physical_activity_e;
+        return $this->physicalActivity_e;
     }
 
     /**
-     * @param string $physical_activity_e
+     * @param string $physicalActivity_e
      */
-    public function setPhysicalActivityE(string $physical_activity_e): void
+    public function setPhysicalActivityE(string $physicalActivity_e): void
     {
-        $this->physical_activity_e = $physical_activity_e;
+        $this->physicalActivity_e = $physicalActivity_e;
     }
 
     /**
@@ -197,15 +197,15 @@ class LifestyleProfile
      */
     public function getPhysicalActivityF(): ?string
     {
-        return $this->physical_activity_f;
+        return $this->physicalActivity_f;
     }
 
     /**
-     * @param string $physical_activity_f
+     * @param string $physicalActivity_f
      */
-    public function setPhysicalActivityF(string $physical_activity_f): void
+    public function setPhysicalActivityF(string $physicalActivity_f): void
     {
-        $this->physical_activity_f = $physical_activity_f;
+        $this->physicalActivity_f = $physicalActivity_f;
     }
 
     /**
@@ -213,15 +213,15 @@ class LifestyleProfile
      */
     public function getPreventiveBehaviorH(): ?string
     {
-        return $this->preventive_behavior_h;
+        return $this->preventiveBehavior_h;
     }
 
     /**
-     * @param string $preventive_behavior_h
+     * @param string $preventiveBehavior_h
      */
-    public function setPreventiveBehaviorH(string $preventive_behavior_h): void
+    public function setPreventiveBehaviorH(string $preventiveBehavior_h): void
     {
-        $this->preventive_behavior_h = $preventive_behavior_h;
+        $this->preventiveBehavior_h = $preventiveBehavior_h;
     }
 
     /**
@@ -229,15 +229,15 @@ class LifestyleProfile
      */
     public function getPreventiveBehaviorI(): ?string
     {
-        return $this->preventive_behavior_i;
+        return $this->preventiveBehavior_i;
     }
 
     /**
-     * @param string $preventive_behavior_i
+     * @param string $preventiveBehavior_i
      */
-    public function setPreventiveBehaviorI(string $preventive_behavior_i): void
+    public function setPreventiveBehaviorI(string $preventiveBehavior_i): void
     {
-        $this->preventive_behavior_i = $preventive_behavior_i;
+        $this->preventiveBehavior_i = $preventiveBehavior_i;
     }
 
     /**
@@ -277,15 +277,15 @@ class LifestyleProfile
      */
     public function getStressManagementN(): ?string
     {
-        return $this->stress_management_n;
+        return $this->stressManagement_n;
     }
 
     /**
-     * @param string $stress_management_n
+     * @param string $stressManagement_n
      */
-    public function setStressManagementN(string $stress_management_n): void
+    public function setStressManagementN(string $stressManagement_n): void
     {
-        $this->stress_management_n = $stress_management_n;
+        $this->stressManagement_n = $stressManagement_n;
     }
 
     /**
@@ -293,15 +293,15 @@ class LifestyleProfile
      */
     public function getStressManagementO(): ?string
     {
-        return $this->stress_management_o;
+        return $this->stressManagement_o;
     }
 
     /**
-     * @param string $stress_management_o
+     * @param string $stressManagement_o
      */
-    public function setStressManagementO(string $stress_management_o): void
+    public function setStressManagementO(string $stressManagement_o): void
     {
-        $this->stress_management_o = $stress_management_o;
+        $this->stressManagement_o = $stressManagement_o;
     }
 
     /**
@@ -325,15 +325,15 @@ class LifestyleProfile
      */
     public function getNutritionA(): ?string
     {
-        return $this->nutrition_a;
+        return $this->nutritionA;
     }
 
     /**
-     * @param string $nutrition_a
+     * @param string $nutritionA
      */
-    public function setNutritionA(string $nutrition_a): void
+    public function setNutritionA(string $nutritionA): void
     {
-        $this->nutrition_a = $nutrition_a;
+        $this->nutritionA = $nutritionA;
     }
 
     /**
@@ -341,15 +341,15 @@ class LifestyleProfile
      */
     public function getPhysicalActivityD(): ?string
     {
-        return $this->physical_activity_d;
+        return $this->physicalActivity_d;
     }
 
     /**
-     * @param string $physical_activity_d
+     * @param string $physicalActivity_d
      */
-    public function setPhysicalActivityD(string $physical_activity_d): void
+    public function setPhysicalActivityD(string $physicalActivity_d): void
     {
-        $this->physical_activity_d = $physical_activity_d;
+        $this->physicalActivity_d = $physicalActivity_d;
     }
 
     /**
@@ -357,15 +357,15 @@ class LifestyleProfile
      */
     public function getPreventiveBehaviorG(): ?string
     {
-        return $this->preventive_behavior_g;
+        return $this->preventiveBehavior_g;
     }
 
     /**
-     * @param string $preventive_behavior_g
+     * @param string $preventiveBehavior_g
      */
-    public function setPreventiveBehaviorG(string $preventive_behavior_g): void
+    public function setPreventiveBehaviorG(string $preventiveBehavior_g): void
     {
-        $this->preventive_behavior_g = $preventive_behavior_g;
+        $this->preventiveBehavior_g = $preventiveBehavior_g;
     }
 
     /**
@@ -389,45 +389,45 @@ class LifestyleProfile
      */
     public function getStressManagementM(): ?string
     {
-        return $this->stress_management_m;
+        return $this->stressManagementM;
     }
 
     /**
-     * @param string $stress_management_m
+     * @param string $stressManagementM
      */
-    public function setStressManagementM(string $stress_management_m): void
+    public function setStressManagementM(string $stressManagementM): void
     {
-        $this->stress_management_m = $stress_management_m;
+        $this->stressManagementM = $stressManagementM;
     }
 
     public function populate($data)
     {
-//        if (isset($data['nutrition_a'])) $this->setNutritionA($data['nutrition_a']);
+//        if (isset($data['nutritionA'])) $this->setNutritionA($data['nutritionA']);
         if (isset($data['nutritionA'])) $this->setNutritionA($data['nutritionA']);
 
-//        if (isset($data['nutrition_b'])) $this->setNutritionB($data['nutrition_b']);
+//        if (isset($data['nutritionB'])) $this->setNutritionB($data['nutritionB']);
         if (isset($data['nutritionB'])) $this->setNutritionB($data['nutritionB']);
 
 //        if (isset($data['nutrition_c'])) $this->setNutritionC($data['nutrition_c']);
         if (isset($data['nutritionC'])) $this->setNutritionC($data['nutritionC']);
 
-//        if (isset($data['physical_activity_d'])) $this->setPhysicalActivityD($data['physical_activity_d']);
-        if (isset($data['physical_activityD'])) $this->setPhysicalActivityD($data['physical_activityD']);
+//        if (isset($data['physicalActivity_d'])) $this->setPhysicalActivityD($data['physicalActivity_d']);
+        if (isset($data['physicalActivityD'])) $this->setPhysicalActivityD($data['physicalActivityD']);
 
-//        if (isset($data['physical_activity_e'])) $this->setPhysicalActivityE($data['physical_activity_e']);
-        if (isset($data['physical_activityE'])) $this->setPhysicalActivityE($data['physical_activityE']);
+//        if (isset($data['physicalActivity_e'])) $this->setPhysicalActivityE($data['physicalActivity_e']);
+        if (isset($data['physicalActivityE'])) $this->setPhysicalActivityE($data['physicalActivityE']);
 
-//        if (isset($data['physical_activity_f'])) $this->setPhysicalActivityF($data['physical_activity_f']);
-        if (isset($data['physical_activityF'])) $this->setPhysicalActivityF($data['physical_activityF']);
+//        if (isset($data['physicalActivity_f'])) $this->setPhysicalActivityF($data['physicalActivity_f']);
+        if (isset($data['physicalActivityF'])) $this->setPhysicalActivityF($data['physicalActivityF']);
 
-//        if (isset($data['preventive_behavior_g'])) $this->setPreventiveBehaviorG($data['preventive_behavior_g']);
-        if (isset($data['preventive_behaviorG'])) $this->setPreventiveBehaviorG($data['preventive_behaviorG']);
+//        if (isset($data['preventiveBehavior_g'])) $this->setPreventiveBehaviorG($data['preventiveBehavior_g']);
+        if (isset($data['preventiveBehaviorG'])) $this->setPreventiveBehaviorG($data['preventiveBehaviorG']);
         
-//        if (isset($data['preventive_behavior_h'])) $this->setPreventiveBehaviorH($data['preventive_behavior_h']);
-        if (isset($data['preventive_behaviorH'])) $this->setPreventiveBehaviorH($data['preventive_behaviorH']);
+//        if (isset($data['preventiveBehavior_h'])) $this->setPreventiveBehaviorH($data['preventiveBehavior_h']);
+        if (isset($data['preventiveBehaviorH'])) $this->setPreventiveBehaviorH($data['preventiveBehaviorH']);
         
-//        if (isset($data['preventive_behavior_i'])) $this->setPreventiveBehaviorI($data['preventive_behavior_i']);
-        if (isset($data['preventive_behaviorI'])) $this->setPreventiveBehaviorI($data['preventive_behaviorI']);
+//        if (isset($data['preventiveBehavior_i'])) $this->setPreventiveBehaviorI($data['preventiveBehavior_i']);
+        if (isset($data['preventiveBehaviorI'])) $this->setPreventiveBehaviorI($data['preventiveBehaviorI']);
         
 //        if (isset($data['relationships_j'])) $this->setRelationshipsJ($data['relationships_j']);
         if (isset($data['relationshipsJ'])) $this->setRelationshipsJ($data['relationshipsJ']);
@@ -438,14 +438,14 @@ class LifestyleProfile
 //        if (isset($data['relationships_l'])) $this->setRelationshipsL($data['relationships_l']);
         if (isset($data['relationshipsL'])) $this->setRelationshipsL($data['relationshipsL']);
 
-//        if (isset($data['stress_management_m'])) $this->setStressManagementM($data['stress_management_m']);
-        if (isset($data['stress_managementM'])) $this->setStressManagementM($data['stress_managementM']);
+//        if (isset($data['stressManagementM'])) $this->setStressManagementM($data['stressManagementM']);
+        if (isset($data['stressManagementM'])) $this->setStressManagementM($data['stressManagementM']);
 
-//        if (isset($data['stress_management_n'])) $this->setStressManagementN($data['stress_management_n']);
-        if (isset($data['stress_managementN'])) $this->setStressManagementN($data['stress_managementN']);
+//        if (isset($data['stressManagement_n'])) $this->setStressManagementN($data['stressManagement_n']);
+        if (isset($data['stressManagementN'])) $this->setStressManagementN($data['stressManagementN']);
 
-//        if (isset($data['stress_management_o'])) $this->setStressManagementO($data['stress_management_o']);
-        if (isset($data['stress_managementO'])) $this->setStressManagementO($data['stress_managementO']);
+//        if (isset($data['stressManagement_o'])) $this->setStressManagementO($data['stressManagement_o']);
+        if (isset($data['stressManagementO'])) $this->setStressManagementO($data['stressManagementO']);
 
     }
 }
